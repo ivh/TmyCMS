@@ -1,25 +1,46 @@
-from django.db import models
-from django.utils.translation import ugettext_lazy as _
+#from django.utils.translation import ugettext_lazy as _
+from django.db import models as m
 from django.contrib.sites.models import Site
 from django.contrib.sites.managers import CurrentSiteManager
 from django.contrib.auth.models import User
-
-ENTRY_STATUS_CHOICES = (
-('draft','draft'),
-('published','published'),
-('private','private'),
-)
-
-class Tag(models.Model):
-    name=models.CharField(max_length=128)
+from django.contrib.comments.moderation import CommentModerator, moderator
 
 
-class Entry(models.Model):
-    datetime=model.DateTimeField()
-    author=model.ForeignKey(User,default=User.objects.get(pk=1))
-    title=models.CharField(max_length=512)
-    text=models.CharField(max_length=512)
-    tags=models.ManyToManyField(Tag,null=True,blank=True)
-    site = models.ManyToManyField(Site)
-    objects = models.Manager()
+class Tag(m.Model):
+    name=m.CharField(max_length=128)
+    slug=m.SlugField(unique=True)
+
+
+class Entry(m.Model):
+    pub_date=m.DateTimeField(null=True,blank=True)
+    mod_date=m.DateTimeField(auto_now=True)
+    author=m.ForeignKey(User,related_name='entries')
+    title=m.CharField(max_length=512)
+    slug=m.SlugField()
+    body=m.CharField(max_length=512)
+    enable_comments = m.BooleanField()
+    tags=m.ManyToManyField(Tag,related_name='entries',null=True,blank=True)
+    site = m.ManyToManyField(Site)
+    objects = m.Manager()
     on_site = CurrentSiteManager()
+
+    def publish(self):
+        pass
+
+    def __unicode__(self):
+        return u'Entry %s: %s'%(self.id,self.title)
+
+
+
+# see http://docs.djangoproject.com/en/dev/ref/contrib/comments/moderation/
+class EntryModerator(CommentModerator):
+    email_notification = True
+    enable_field = 'enable_comments'
+    auto_moderate_field   = 'pub_date'
+    moderate_after        = 31
+
+moderator.register(Entry, EntryModerator)
+
+
+
+

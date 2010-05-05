@@ -103,5 +103,5 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.comments',
 
-    'MyDjangosites.blog',
+    'MyDjangoSites.blog',
 )
