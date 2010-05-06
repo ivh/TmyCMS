@@ -35,5 +35,11 @@ for ID,post_date,post_title,post_content,post_name in posts:
     entry=Entry(pub_date=post_date,title=post_title,lang=LANG,body=post_content,author=AUTHOR,slug=post_name)
     entry.save(force_insert=True)
     entry.site.add(SITE)
-#    entry.tags.add(Tag)
+    
+    cursor.execute('select slug from wp_terms where wp_posts, wp_term_relationships, wp_term_taxonomy where wp_posts.ID="%s" AND wp_posts.ID=wp_term_relationships.object_ID AND wp_term_relationships.term_taxonomy_id=wp_term_taxonomy.term_taxonomy_id AND wp_term_taxonomy.term_id=wp_terms.term_id')
+    tags=cursor.fetchall()
+    for slug in tags:
+        #    entry.tags.add(Tag)
+        print post_name slug
+
     entry.save()
