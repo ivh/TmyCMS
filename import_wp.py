@@ -39,7 +39,7 @@ for ID,post_date,post_title,post_content,post_name in posts:
     cursor.execute('select name,slug from wp_terms, wp_posts, wp_term_relationships, wp_term_taxonomy where wp_posts.ID="%s" AND wp_posts.ID=wp_term_relationships.object_ID AND wp_term_relationships.term_taxonomy_id=wp_term_taxonomy.term_taxonomy_id AND wp_term_taxonomy.term_id=wp_terms.term_id'%ID)
     tags=cursor.fetchall()
     for tag_name,tag_slug in tags:
-        tag=Tags.objects.get(slug=tag_slug)
+        tag=Tag.objects.get(slug=tag_slug)
         entry.tags.add(Tag)
         print post_name,tag_slug,Tag
 
