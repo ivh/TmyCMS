@@ -41,7 +41,9 @@ TIME_ZONE = 'Europe/Stockholm'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'sv-se'
 
-SITE_ID = 1
+#SITE_ID = 1
+from multisite.threadlocals import SiteIDHook
+SITE_ID = SiteIDHook()
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -72,15 +74,17 @@ SECRET_KEY = 'd$@gw87j$(u#hfqm150*2rhkum1giv*zh2wp8lfn-6_0gfr97c'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
+    'multisite.template_loader.load_template_source',
+    'django.template.loaders.app_directories.load_template_source', 
 #     'django.template.loaders.eggs.Loader',
 )
-
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'multisite.middleware.DynamicSiteMiddleware',
 )
 
 ROOT_URLCONF = 'MyDjangoSites.urls'

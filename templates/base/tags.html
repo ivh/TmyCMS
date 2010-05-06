@@ -1,0 +1,11 @@
+{% extends "tarski.html" %}
+
+{% block content %}
+
+<ul>
+{% for tag in object_list %}
+<li>{{ tag.name }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

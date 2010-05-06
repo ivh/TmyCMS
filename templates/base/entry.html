@@ -1,0 +1,60 @@
+{% extends "tarski.html" %}
+{% load markup %}
+{% load comments %}
+
+
+{% block content %}
+
+	
+		<div class="post-{{ object.id }} post hentry category-schweden tag-foto tag-stockholm entry">
+			
+			<div class="meta">
+				<h2 class="title entry-title" id="post-{{ object.id }}"><a href="http://www.fiket.de/2010/05/05/taket-3/" rel="bookmark" title="Dauerhafte Adresse von Taket">{{ object.title }}</a></h2>
+				<p class="metadata"><span class="date updated">{{ object.pub_date }}</span> | <a href="http://www.fiket.de/2010/05/05/taket-3/#respond" class="comments-link"  title="Comment on Taket">Keine Kommentare</a></p>
+			</div>
+			
+			<div class="content">
+				{{ object.body|markdown }}
+
+ 			</div>
+		</div> 
+			<div id="comments-header"> 
+			  <div class="clearfix"> 
+			    {% get_comment_count for object as comment_count %}
+			<h2 class="title">{{ comment_count }} Kommentare</h2> 
+		  			<p class="comments-feed"><a href="http://www.fiket.de/2010/05/05/taket-3/feed/">RSS-Feed f&uuml;r Kommentare zu diesem Artikel</a></p> 
+  		  		</div> 
+  				<p class="trackback-link">Trackback-Link: <a href="http://www.fiket.de/2010/05/05/taket-3/trackback/">http://www.fiket.de/2010/05/05/taket-3/trackback/</a></p> 
+			</div>
+	
+
+			<ol id="comments" class="clearfix"> 
+			  {% get_comment_list for object as comment_list %}
+			  {% for comment in comment_list %}
+			  <li class="comment even thread-even depth-1" id="comment-{{ comment.id }}"> 
+			    <div class="comment-wrapper clearfix" id="comment-wrapper-{{ comment.id }}">
+			      <p class="comment-meta commentmetadata">
+				<span class="comment-author vcard">
+				  <a class="url fn" href="{{ comment.user_url }}" rel="external nofollow">{{ comment.user_name }}</a></span> am <span class="comment-permalink">
+				  <a title="Adresse zu diesem Kommentar" href="http://www.fiket.de/2010/05/04/neues-vom-wahlkampf/comment-page-1/#comment-65045">2010-05-04 um 17:31</a></span>					</p> 
+					
+					<div class="comment-content content"> 
+					{{ comment.comment|markdown }}	
+					</div> 
+					
+			    </div> 
+			  </li>
+			  {% endfor %}
+			</ol>
+			
+
+			<div id="respond"> <div id="respond-header" class="clearfix"> 
+			<h2 class="title">Kommentieren</h2> </div>
+			{% render_comment_form for object %}
+			</div>
+					
+		</div>
+	
+
+
+{% endblock %}

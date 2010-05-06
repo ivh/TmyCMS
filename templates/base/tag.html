@@ -1,0 +1,11 @@
+{% extends "tarski.html" %}
+
+{% block content %}
+
+<ul>
+{% for entry in object_list %}
+<li>{{ entry.title }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

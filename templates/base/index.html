@@ -1,0 +1,25 @@
+{% extends "tarski.html" %}
+{% block title %}Base title{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<ul>
+{% for entry in object_list %}
+<li>{{ entry.title }}</li>
+{% endfor %}
+</ul>
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}
+
+{% block footsidebar %}
+{% endblock %}
+
+{% block footcontent %}
+{% endblock %}
+
+{% block themeinfo %}
+{% endblock %}

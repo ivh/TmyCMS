@@ -38,6 +38,9 @@ class Entry(m.Model):
     def __unicode__(self):
         return u'Entry %s: %s'%(self.id,self.title)
 
+    class Meta:
+        ordering = ["-pub_date"]
+        
 
 
 # see http://docs.djangoproject.com/en/dev/ref/contrib/comments/moderation/
