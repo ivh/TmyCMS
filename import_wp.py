@@ -36,11 +36,11 @@ for ID,post_date,post_title,post_content,post_name in posts:
     entry.save(force_insert=True)
     entry.site.add(SITE)
     
-    cursor.execute('select slug from wp_terms, wp_posts, wp_term_relationships, wp_term_taxonomy where wp_posts.ID="%s" AND wp_posts.ID=wp_term_relationships.object_ID AND wp_term_relationships.term_taxonomy_id=wp_term_taxonomy.term_taxonomy_id AND wp_term_taxonomy.term_id=wp_terms.term_id')
+    cursor.execute('select name,slug from wp_terms, wp_posts, wp_term_relationships, wp_term_taxonomy where wp_posts.ID="%s" AND wp_posts.ID=wp_term_relationships.object_ID AND wp_term_relationships.term_taxonomy_id=wp_term_taxonomy.term_taxonomy_id AND wp_term_taxonomy.term_id=wp_terms.term_id')
     tags=cursor.fetchall()
-    for slug in tags:
-        tag=Tags.objects.get(slug=slug)
+    for tag_name,tag_slug in tags:
+        tag=Tags.objects.get(slug=tag_slug)
         entry.tags.add(Tag)
-        print post_name,slug,Tag
+        print post_name,tag_slug,Tag
 
     entry.save()
