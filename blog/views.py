@@ -2,6 +2,7 @@ from django.http import Http404
 from django.views.generic import list_detail
 from MyDjangoSites.blog.models import Tag,Entry
 from django.contrib.sites.models import Site
+from django.contrib.syndication.views import Feed
 
 
 def index(request):
@@ -52,3 +53,19 @@ def tag_view(request, slug):
         queryset = entries,
         template_name = "tag.html",
     )
+
+
+
+class LatestEntriesFeed(Feed):
+    title = Site.objects.get_current().name
+    link = "http://%s"%Site.objects.get_current().domain
+    description = ""
+
+    def items(self):
+        return Entry.objects.all()[:15]
+
+    def item_title(self, item):
+        return item.title
+
+    def item_description(self, item):
+        return item.body

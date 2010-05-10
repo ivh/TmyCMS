@@ -45,7 +45,7 @@ def do_comments(cursor,ID,entry):
 
 
 def do_entries(cursor):
-    cursor.execute('select ID,post_date,post_title,post_content,post_name from wp_posts where post_status="publish";')
+    cursor.execute('select ID,post_date,post_title,post_content,post_name from wp_posts where post_status="publish" and (post_type="post" or post_type="page");')
     posts=cursor.fetchall()
         
     for ID,post_date,post_title,post_content,post_name in posts:
@@ -63,7 +63,7 @@ def do_entries(cursor):
                 
     
     
-        cursor.execute('select name,slug from wp_terms, wp_posts, wp_term_relationships, wp_term_taxonomy where wp_posts.ID="%s" AND wp_posts.ID=wp_term_relationships.object_ID AND wp_term_relationships.term_taxonomy_id=wp_term_taxonomy.term_taxonomy_id AND wp_term_taxonomy.term_id=wp_terms.term_id and post_type="post"'%ID)
+        cursor.execute('select name,slug from wp_terms, wp_posts, wp_term_relationships, wp_term_taxonomy where wp_posts.ID="%s" AND wp_posts.ID=wp_term_relationships.object_ID AND wp_term_relationships.term_taxonomy_id=wp_term_taxonomy.term_taxonomy_id AND wp_term_taxonomy.term_id=wp_terms.term_id'%ID)
         tags=cursor.fetchall()
         for tag_name,tag_slug in tags:
             tag=Tag.objects.get(slug=tag_slug)
