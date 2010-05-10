@@ -32,7 +32,7 @@ def do_tags(cursor):
         Tag(name=name,slug=slug).save()
         
 
-def do_comments(cursor,ID):
+def do_comments(cursor,ID,entry):
     cursor.execute('select comment_author,comment_author_email,comment_author_url,comment_author_IP,comment_date,comment_content from wp_comments where comment_approved=1 and comment_post_ID=%s'%ID)
     comments=cursor.fetchall()
     for comment_author,comment_author_email,comment_author_url,comment_author_IP,comment_date,comment_content in comments:
@@ -66,7 +66,7 @@ def do_entries(cursor):
             entry.tags.add(tag)
             
         entry.save()
-        do_comments(cursor,ID)
+        do_comments(cursor,ID,entry)
 
 
 
