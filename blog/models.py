@@ -44,7 +44,7 @@ class Entry(m.Model):
 
     @m.permalink
     def get_absolute_url(self):
-        return ('permalink', [str(self.pub_date.year),str(self.pub_date.month).zfill(2),str(self.pub_date.month).zfill(2),self.slug])
+        return ('permalink', [str(self.pub_date.year),str(self.pub_date.month).zfill(2),str(self.pub_date.day).zfill(2),self.slug])
 
     class Meta:
         ordering = ["-pub_date"]

@@ -66,6 +66,7 @@
 
 					
 {% block content %}
+{% for object in object_list%}
 <div class="post-{{ object.id }} post hentry category-schweden tag-foto tag-stockholm entry">
 			
   <div class="meta">
@@ -80,6 +81,7 @@
 
  			</div>
 		</div>
+{% endfor %}
 {% endblock %}
 
 </div>
