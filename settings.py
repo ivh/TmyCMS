@@ -18,14 +18,6 @@ DATABASES = {
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
         },
-    'blogblog': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'blogblog',       
-        'USER': 'blogblog',    
-        'PASSWORD': 'aiN8dee2',   
-        'HOST': '', 
-        'PORT': '',   
-        },
 }
 
 # Local time zone for this installation. Choices can be found here:
