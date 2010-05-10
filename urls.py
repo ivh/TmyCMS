@@ -32,7 +32,7 @@ entrypatterns = patterns('MyDjangoSites.blog.views',
                            }),
                          (r'^post/(?P<id>\d+)/$','entry_view'),
                          (r'^tags/', list_detail.object_list, 
-                          {'queryset':Tag.objects.filter(entries__site=current_site),
+                          {'queryset':Tag.objects.filter(site=current_site),
                            'template_name':'tags.html'
                            }),
                          (r'^tag/(?P<slug>\w+)/$','tag_view'),
