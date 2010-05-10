@@ -6,7 +6,7 @@ from django.contrib.sites.models import Site
 
 def index(request):
     current_site = Site.objects.get_current()
-    return list_detail.object_list(request,queryset=Entry.objects.filter(site=current_site), template_name='index.html')
+    return list_detail.object_list(request,queryset=Entry.objects.filter(site=current_site)[:15], template_name='index.html')
 
 def tags(request):
     current_site = Site.objects.get_current()

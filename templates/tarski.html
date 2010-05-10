@@ -1,3 +1,4 @@
+{% load markup %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="de-DE" xml:lang="de-DE">
 
@@ -63,35 +64,24 @@
 <div id="content" class="clearfix">
 <div class="primary posts">
 
-		
-{% block content %}				
-				
-		
-	
-		<div class="post-4723 post hentry category-schweden tag-foto tag-stockholm entry">
+					
+{% block content %}
+<div class="post-{{ object.id }} post hentry category-schweden tag-foto tag-stockholm entry">
 			
-			<div class="meta">
-				<h2 class="title entry-title" id="post-4723"><a href="http://www.fiket.de/2010/05/05/taket-3/" rel="bookmark" title="Dauerhafte Adresse von Taket">Taket</a></h2>
-				<p class="metadata"><span class="date updated">2010-05-05</span> | <a href="http://www.fiket.de/2010/05/05/taket-3/#respond" class="comments-link"  title="Comment on Taket">Keine Kommentare</a></p>
+  <div class="meta">
+    <h2 class="title entry-title" id="post-{{ object.id }}">
+      <a href="{{object.get_absolute_url}}" rel="bookmark" title="Permalink für diesen Artikel">{{ object.title }}</a>
+    </h2>
+				<p class="metadata"><span class="date updated">{{ object.pub_date.date }}</span> | <a href="{{object.get_absolute_url}}#respond" class="comments-link"  title="Kommentieren">X Kommentare</a></p>
 			</div>
 			
-			<div class="content entry-content">
-					<p><a class="imagelink" href="http://www.fiket.de/pic/stadshustak_l.jpg" rel="lightbox[4723]"><img src="http://www.fiket.de/pic/stadshustak_s.jpg" title="Die Decke" alt="Die Decke" /></a></p>
-	<p>Die Decke des Sitzungsaals des Stockholmer Stadtrats im <em>Stadshuset</em>.</p>
+			<div class="content">
+				{{ object.body|markdown }}
 
  			</div>
-			
-						
 		</div>
-	
-		
-		
-		
-
-<p class="pagination"><a href="http://www.fiket.de/page/2/" >&laquo; &Auml;ltere Beitr&auml;ge</a></p>
-			
-	
 {% endblock %}
+
 </div>
 	
 <div id="sidebar" class="secondary">
