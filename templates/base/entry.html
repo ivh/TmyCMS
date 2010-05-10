@@ -9,8 +9,8 @@
 		<div class="post-{{ object.id }} post hentry category-schweden tag-foto tag-stockholm entry">
 			
 			<div class="meta">
-				<h2 class="title entry-title" id="post-{{ object.id }}"><a href="http://www.fiket.de/2010/05/05/taket-3/" rel="bookmark" title="Dauerhafte Adresse von Taket">{{ object.title }}</a></h2>
-				<p class="metadata"><span class="date updated">{{ object.pub_date }}</span> | <a href="http://www.fiket.de/2010/05/05/taket-3/#respond" class="comments-link"  title="Comment on Taket">Keine Kommentare</a></p>
+				<h2 class="title entry-title" id="post-{{ object.id }}"><a href="{{ object.get_absolute_url }}" rel="bookmark" title="Permalink dieses Artikels">{{ object.title }}</a></h2>
+				<p class="metadata"><span class="date updated">{{ object.pub_date }}</span> | <a href="{{ object.get_absolute_url }}#respond" class="comments-link"  title="Kommentieren">Keine Kommentare</a></p>
 			</div>
 			
 			<div class="content">
@@ -22,9 +22,8 @@
 			  <div class="clearfix"> 
 			    {% get_comment_count for object as comment_count %}
 			<h2 class="title">{{ comment_count }} Kommentare</h2> 
-		  			<p class="comments-feed"><a href="http://www.fiket.de/2010/05/05/taket-3/feed/">RSS-Feed f&uuml;r Kommentare zu diesem Artikel</a></p> 
+		  			<p class="comments-feed"><a href="{{ object.get_absolute_url }}feed/">RSS-Feed f&uuml;r Kommentare zu diesem Artikel</a></p> 
   		  		</div> 
-  				<p class="trackback-link">Trackback-Link: <a href="http://www.fiket.de/2010/05/05/taket-3/trackback/">http://www.fiket.de/2010/05/05/taket-3/trackback/</a></p> 
 			</div>
 	
 
@@ -36,7 +35,7 @@
 			      <p class="comment-meta commentmetadata">
 				<span class="comment-author vcard">
 				  <a class="url fn" href="{{ comment.user_url }}" rel="external nofollow">{{ comment.user_name }}</a></span> am <span class="comment-permalink">
-				  <a title="Adresse zu diesem Kommentar" href="http://www.fiket.de/2010/05/04/neues-vom-wahlkampf/comment-page-1/#comment-65045">2010-05-04 um 17:31</a></span>					</p> 
+				  <a title="Permalink zu diesem Kommentar" href="{{ object.get_absolute_url }}#comment-65045">2010-05-04 um 17:31</a></span>					</p> 
 					
 					<div class="comment-content content"> 
 					{{ comment.comment|markdown }}	
