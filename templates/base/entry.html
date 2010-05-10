@@ -14,7 +14,7 @@
 			</div>
 			
 			<div class="content">
-				{{ object.body|markdown }}
+				{{ object.body|textile }}
 
  			</div>
 		</div> 
@@ -38,7 +38,7 @@
 				  <a title="Permalink zu diesem Kommentar" href="{{ object.get_absolute_url }}#comment-65045">2010-05-04 um 17:31</a></span>					</p> 
 					
 					<div class="comment-content content"> 
-					{{ comment.comment|markdown }}	
+					{{ comment.comment|textile }}	
 					</div> 
 					
 			    </div> 
