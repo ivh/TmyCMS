@@ -13,7 +13,7 @@ LANGUAGES=(
 
 class Tag(m.Model):
     name=m.CharField(max_length=128)
-    slug=m.SlugField(unique=True)
+    slug=m.SlugField(primary_key=True)
     def __unicode__(self):
         return u'Tag %s: %s'%(self.id,self.name)
 
