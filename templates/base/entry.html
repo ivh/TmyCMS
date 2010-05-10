@@ -17,6 +17,7 @@
 				{{ object.body|textile }}
 
  			</div>
+			<p class="tagdata"><strong>Schlagworte:</strong> {% for tag in object.tags %}<a href="{{ tag.get_absolute_url }}" rel="tag">{{ tag.name }}</a>{% if not forloop.last %},{% endif %} {% endfor %}</p>
 		</div> 
 			<div id="comments-header"> 
 			  <div class="clearfix"> 
