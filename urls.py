@@ -23,11 +23,11 @@ commentpatterns = patterns('',
 )
 
 entrypatterns = patterns('MyDjangoSites.blog.views',
-    (r'^posts/', 'index'),
+    (r'^$', 'index'),
     (r'^post/(?P<id>\d+)/$','entry_by_id'),
-    (r'^(?P<yr>\d{4})/(?P<mon>\d{2})/(?P<day>\d{2})/(?P<slug>[\w-]+)/$','entry_by_permalink'),
-    (r'^tags/', 'tags'),
-    (r'^tag/(?P<slug>\w+)/$','tag_view'),
+    url(r'^(?P<yr>\d{4})/(?P<mon>\d{2})/(?P<day>\d{2})/(?P<slug>[\w-]+)/$','entry_by_permalink',name='permalink'),
+    (r'^tags/$', 'tags'),
+    url(r'^tag/(?P<slug>\w+)/$','tag_view',name='tag'),
  )
 
 urlpatterns = adminpatterns + commentpatterns + entrypatterns

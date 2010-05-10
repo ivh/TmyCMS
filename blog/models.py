@@ -18,6 +18,9 @@ class Tag(m.Model):
     def __unicode__(self):
         return u'Tag: %s'%self.name
 
+    @m.permalink
+    def get_absolute_url(self):
+        return ('tag', [self.slug])
 
 class Entry(m.Model):
     pub_date=m.DateTimeField(null=True,blank=True)
@@ -38,6 +41,10 @@ class Entry(m.Model):
 
     def __unicode__(self):
         return u'Entry %s: %s'%(self.id,self.title)
+
+    @m.permalink
+    def get_absolute_url(self):
+        return ('permalink', [str(self.pub_date.year),str(self.pub_date.month).zfill(2),str(self.pub_date.month).zfill(2),self.slug])
 
     class Meta:
         ordering = ["-pub_date"]

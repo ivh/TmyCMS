@@ -4,7 +4,7 @@
 
 <ul>
 {% for entry in object_list %}
-<li>{{ entry.title }}</li>
+<li><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></li>
 {% endfor %}
 </ul>
 
