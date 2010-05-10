@@ -30,7 +30,8 @@ entrypatterns = patterns('MyDjangoSites.blog.views',
                           {'queryset':Entry.objects.filter(site=current_site),
                            'template_name':'index.html'
                            }),
-                         (r'^post/(?P<id>\d+)/$','entry_view'),
+                         (r'^post/(?P<id>\d+)/$','entry_by_id'),
+                         (r'^(?P<yr>\d{4})/(?P<mon>\d{2})/(?P<day>\d{2})/(?P<slug>[\w-]+)/$','entry_by_permalink'),
                          (r'^tags/', list_detail.object_list, 
                           {'queryset':Tag.objects.filter(site=current_site),
                            'template_name':'tags.html'
