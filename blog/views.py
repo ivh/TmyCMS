@@ -3,6 +3,15 @@ from django.views.generic import list_detail
 from MyDjangoSites.blog.models import Tag,Entry
 from django.contrib.sites.models import Site
 
+
+def index(request):
+    current_site = Site.objects.get_current()
+    return list_detail.object_list(request,queryset=Entry.objects.filter(site=current_site), template_name='index.html')
+
+def tags(request):
+    current_site = Site.objects.get_current()
+    return list_detail.object_list(request,queryset=Tag.objects.filter(site=current_site), template_name='tags.html')
+
 def entry_by_id(request, id):
     try:
         entry = Entry.objects.get(pk=id)

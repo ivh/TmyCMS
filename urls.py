@@ -3,9 +3,6 @@ from django.contrib.comments.feeds import LatestCommentFeed
 from django.views.generic import list_detail
 from MyDjangoSites.blog.models import Tag,Entry
 
-from django.contrib.sites.models import Site
-current_site = Site.objects.get_current()
-
 from django.contrib import admin
 admin.autodiscover()
 
@@ -26,18 +23,11 @@ commentpatterns = patterns('',
 )
 
 entrypatterns = patterns('MyDjangoSites.blog.views',
-                         (r'^posts/', list_detail.object_list, 
-                          {'queryset':Entry.objects.filter(site=current_site),
-                           'template_name':'index.html'
-                           }),
-                         (r'^post/(?P<id>\d+)/$','entry_by_id'),
-                         (r'^(?P<yr>\d{4})/(?P<mon>\d{2})/(?P<day>\d{2})/(?P<slug>[\w-]+)/$','entry_by_permalink'),
-                         (r'^tags/', list_detail.object_list, 
-                          {'queryset':Tag.objects.filter(site=current_site),
-                           'template_name':'tags.html'
-                           }),
-                         (r'^tag/(?P<slug>\w+)/$','tag_view'),
-  
+    (r'^posts/', 'index'),
+    (r'^post/(?P<id>\d+)/$','entry_by_id'),
+    (r'^(?P<yr>\d{4})/(?P<mon>\d{2})/(?P<day>\d{2})/(?P<slug>[\w-]+)/$','entry_by_permalink'),
+    (r'^tags/', 'tags'),
+    (r'^tag/(?P<slug>\w+)/$','tag_view'),
  )
 
 urlpatterns = adminpatterns + commentpatterns + entrypatterns
