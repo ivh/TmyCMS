@@ -23,7 +23,7 @@ blogs=[{'sitename':'BlogBlog','dbuser':'blogblog','dbname':'blogblog','pwd':pwds
 for blog in blogs:
     conn = MySQLdb.connect (host = "localhost",
                              user = blog['dbuser'],
-                             passwd = blog[pwd],
+                             passwd = blog['pwd'],
                              db = blog['dbname'])
     
     cursor = conn.cursor ()
