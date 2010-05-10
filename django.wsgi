@@ -4,7 +4,7 @@ sys.path.append('/home/tom/py/')
 sys.path.append('/home/tom/sites/')
 sys.path.append('/home/tom/sites/MyDjangoSites')
 
-os.environ['DJANGO_SETTINGS_MODULE'] = 'DjVAMDC.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'MyDjangoSites.settings'
 
 
 import django.core.handlers.wsgi
