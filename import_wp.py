@@ -88,4 +88,3 @@ for blog in blogs:
     do_entries(cursor)
     
     
-    entry.save()
