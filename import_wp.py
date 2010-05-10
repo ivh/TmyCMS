@@ -28,7 +28,7 @@ blogs=[{'sitename':'BlogBlog','dbuser':'blogblog','dbname':'blogblog','pwd':pwds
 def do_tags(cursor):
     cursor.execute('select name,slug from wp_terms;')
     for name,slug in cursor.fetchall():
-    #print name, slug
+        print name, slug
         t=Tag(slug=slug)
         t.name=name
         t.save()
