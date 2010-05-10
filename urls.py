@@ -21,8 +21,8 @@ feeds = {
 }
 
 urlpatterns += patterns('',
-    (r'^comments/feed/', LatestCommentFeed),
-    (r'^feed/',LatestEntriesFeed),
+    (r'^comments/feed/', LatestCommentFeed()),
+    (r'^feed/',LatestEntriesFeed()),
     (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
 )
 
