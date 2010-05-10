@@ -1,0 +1,38 @@
+{% extends "tarski.html" %}
+{% block title %}Das BlogBlog{% endblock %}
+
+{% block header %}
+<div id="title">
+  <h1 id="blog-title">Das BlogBlog</h1>
+  <p id="tagline">ein reines Metablog</p></div>
+<div id="navigation" class="clearfix">
+  <ul class="primary xoxo">
+    <li><a id="nav-home" class="nav-current" href="http://www.fiket.de/" rel="home">Startseite</a></li>
+    <li><a id="nav-2-about" href="http://www.fiket.de/about/">Über Fiket</a></li>
+    <li><a id="nav-933-dies-und-das" href="http://www.fiket.de/dies-und-das/">Dies Und Das</a></li>
+    <li><a id="nav-3-archiv" href="http://www.fiket.de/archiv/">Archiv</a></li>
+    <li><a id="nav-11-impressum" href="http://www.fiket.de/impressum/">Impressum</a></li>
+  </ul>
+
+  <div class="secondary">
+    <p><a class="feed" href="http://www.fiket.de/feed/">Feed abonnieren</a></p>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<ul>
+  {% for entry in object_list %}
+  <li>{{ entry.title }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}
+
+{% block footsidebar %}
+{% endblock %}
+
+{% block footcontent %}
+{% endblock %}
