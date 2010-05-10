@@ -29,7 +29,9 @@ def do_tags(cursor):
     cursor.execute('select name,slug from wp_terms;')
     for name,slug in cursor.fetchall():
     #print name, slug
-        Tag(name=name,slug=slug).save()
+        t=Tag(slug=slug)
+        t.name=name
+        t.save()
         
 
 def do_comments(cursor,ID,entry):
