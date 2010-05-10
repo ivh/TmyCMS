@@ -26,13 +26,15 @@ commentpatterns = patterns('',
 )
 
 entrypatterns = patterns('MyDjangoSites.blog.views',
-                         (r'^posts/', list_detail.object_list, {'queryset':Entry.objects.all(),
-                                                                'template_name':'index.html'
-                                                                }),
+                         (r'^posts/', list_detail.object_list, 
+                          {'queryset':Entry.objects.filter(site=current_site),
+                           'template_name':'index.html'
+                           }),
                          (r'^post/(?P<id>\d+)/$','entry_view'),
-                         (r'^tags/', list_detail.object_list, {'queryset':Tag.objects.all(),
-                                                                'template_name':'tags.html'
-                                                                }),
+                         (r'^tags/', list_detail.object_list, 
+                          {'queryset':Tag.objects.filter(entries__site=current_site),
+                           'template_name':'tags.html'
+                           }),
                          (r'^tag/(?P<slug>\w+)/$','tag_view'),
   
  )

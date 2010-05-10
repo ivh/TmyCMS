@@ -12,8 +12,9 @@ LANGUAGES=(
 )
 
 class Tag(m.Model):
+    slug=m.SlugField(primary_key=True,unique=True)
     name=m.CharField(max_length=128)
-    slug=m.SlugField(primary_key=True)
+    site=m.ManyToManyField(Site)
     def __unicode__(self):
         return u'Tag: %s'%self.name
 

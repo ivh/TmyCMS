@@ -1,6 +1,7 @@
 from django.http import Http404
 from django.views.generic import list_detail
 from MyDjangoSites.blog.models import Tag,Entry
+from django.contrib.sites.models import Site
 
 def entry_view(request, id):
     try:
@@ -21,7 +22,8 @@ def tag_view(request, slug):
     except Entry.DoesNotExist:
         raise Http404
 
-    entries=tag.entries.all()
+    cursite=Site.objects.get_current()
+    entries=tag.entries.filter(site=cursite)
     
     return list_detail.object_list(
         request,

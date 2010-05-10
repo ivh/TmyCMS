@@ -31,6 +31,7 @@ def do_tags(cursor):
         print name, slug
         t=Tag(slug=slug)
         t.name=name
+        t.site.add(SITE)
         t.save()
         
 
