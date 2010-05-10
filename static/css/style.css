@@ -70,7 +70,7 @@ body.rtl #navigation ul.primary { direction: ltr; }
 
 	/* Feed icon
 	------------------------------------------- */
-	body .feed { display: block; float: left; padding: 1px 0 1px 20px; min-height: 15px; font-size: 0.8em; background: url('images/icons.png') no-repeat 0 1px; }
+	body .feed { display: block; float: left; padding: 1px 0 1px 20px; min-height: 15px; font-size: 0.8em; background: url('/images/icons.png') no-repeat 0 1px; }
 	body.janus .feed, body.rtl .feed { float: right; padding: 1px 20px 1px 0; background-position: 100% 1px; }
 
 /* Content
@@ -143,7 +143,7 @@ body.rtl #navigation ul.primary { direction: ltr; }
 	/* Downloads
 	--------------------------------------- */
 	body a.download { display: block; margin: 1em 0; padding: 5px 5px 5px 28px; min-height: 15px; }
-	body .content a.download:link, body .content a.download:visited, body .content a.download:active { background:#fcffff url('images/icons.png') no-repeat 5px -295px; border: 1px solid #cfe2e5; }
+	body .content a.download:link, body .content a.download:visited, body .content a.download:active { background:#fcffff url('/images/icons.png') no-repeat 5px -295px; border: 1px solid #cfe2e5; }
 	body .content a.download:hover { text-decoration: underline; }
 
 	/* Images
@@ -195,11 +195,11 @@ body.rtl #navigation ul.primary { direction: ltr; }
 		body p.pingdata { margin: 0; font-size: 0.8em; color: #808080; }
 		li.comment-lvl-first { border-top: none; }
 		body .comment .reply { clear: both; }
-		body .comment .reply a { padding-left: 13px; background: url('images/icons.png') no-repeat -7px -398px; }
-		body.rtl .comment .reply a { background: url('images/icons.png') no-repeat -7px -598px; }
+		body .comment .reply a { padding-left: 13px; background: url('/images/icons.png') no-repeat -7px -398px; }
+		body.rtl .comment .reply a { background: url('/images/icons.png') no-repeat -7px -598px; }
 	
 	body .comment-wrapper { padding: 0.66em 0; }
-	body .moderated { border-bottom: 1px solid #e5e5e5; padding-bottom: 0.66em; background: url('images/icons.png') no-repeat 100% -200px; }
+	body .moderated { border-bottom: 1px solid #e5e5e5; padding-bottom: 0.66em; background: url('/images/icons.png') no-repeat 100% -200px; }
 	body .comment-meta { margin: 0; float: left; font-size: 0.8em; color: #808080; }
 	body.rtl .comment-meta { float: right;}
 		body .avatar-link { display: block; float: right; margin: 0 0 10px 10px; }
@@ -219,7 +219,7 @@ body.rtl #navigation ul.primary { direction: ltr; }
 	#comments-header .title { width: 49.5%; float: left; margin: 0 0 0.1em 0; border: none; }
 	.rtl #comments-header .title { float: right; }
 	#comments-header .comments-feed { width: 49.5%; float: right; text-align: right; margin: 0; padding: 0.75em 0 0 0; }
-		#comments-header .comments-feed a { display: block; float:right; min-height:16px; padding: 1px 20px 1px 0; background: url('images/icons.png') no-repeat 100% -100px; font-size: 0.8em; }
+		#comments-header .comments-feed a { display: block; float:right; min-height:16px; padding: 1px 20px 1px 0; background: url('/images/icons.png') no-repeat 100% -100px; font-size: 0.8em; }
 		.rtl #comments-header .comments-feed a { float:left; padding: 1px 20px 1px 0; }
 	#comments-header .trackback-link { clear: both; margin: 0.4em 0 0 0; border-top: 1px solid #ccc; padding: 0.5em 0; font-size: 0.8em; font-weight: bold; color: #808080; }
 		#comments-header .trackback-link a { font-weight: normal; }
@@ -263,7 +263,7 @@ body.rtl #navigation ul.primary { direction: ltr; }
 input, select, textarea { font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 100%; }
 input.text, input[type=text], input[type=password], textarea { border: 1px solid #ccc; padding: 2px; background: #fafafa; color: #404040; }
 input.text:focus, input[type=text]:focus, input[type=password]:focus, textarea:focus { background: #fff; }
-input[type=submit]:enabled, button:enabled { border: 1px solid #ccc; padding: 2px 10px; border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px; background: url('images/button_gradient.png') repeat-x 0 0; color: #404040; cursor: pointer; }
+input[type=submit]:enabled, button:enabled { border: 1px solid #ccc; padding: 2px 10px; border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px; background: url('/images/button_gradient.png') repeat-x 0 0; color: #404040; cursor: pointer; }
 input[type=submit]:enabled:focus, input[type=submit]:enabled:hover, button:enabled:focus, button:enabled:hover { border-color: #666; }
 
 	/* Search form
@@ -290,7 +290,7 @@ input[type=submit]:enabled:focus, input[type=submit]:enabled:hover, button:enabl
 	.rtl #respond-header .title { float: right; }
 	#respond-header .cancel-reply { float: right; margin: 0; padding-top: 0.75em; font-size: 0.8em; }
 	.rtl #respond-header .cancel-reply { float: left; }
-		#respond-header .cancel-reply a { padding-right: 13px; background: url('images/icons.png') no-repeat 100% -498px; }
+		#respond-header .cancel-reply a { padding-right: 13px; background: url('/images/icons.png') no-repeat 100% -498px; }
 	body .response-details { margin-bottom: 1em; }
 	body .response-details .text-wrap { width: 31%; float: left; margin-right: 2%; }
 	body .response-details > .text-wrap { width: 32%; }
@@ -385,35 +385,35 @@ td {
 }
 
 .sv {
-        background: url('images/swehalf.gif') center right no-repeat;
+        background: url('/images/swehalf.gif') center right no-repeat;
         padding-right: 13px;
 }
 .sv:hover {
-        background: url('images/swefull.gif') center right no-repeat;
+        background: url('/images/swefull.gif') center right no-repeat;
         padding-right: 13px;
 }
 .de {
-        background: url('images/deuhalf.gif') center right no-repeat;
+        background: url('/images/deuhalf.gif') center right no-repeat;
         padding-right: 13px;
 }
 .de:hover {
-        background: url('images/deufull.gif') center right no-repeat;
+        background: url('/images/deufull.gif') center right no-repeat;
         padding-right: 13px;
 }
 .en {
-        background: url('images/enghalf.gif') center right no-repeat;
+        background: url('/images/enghalf.gif') center right no-repeat;
         padding-right: 13px;
 }
 .en:hover {
-        background: url('images/engfull.gif') center right no-repeat;
+        background: url('/images/engfull.gif') center right no-repeat;
         padding-right: 13px;
 }
 .im {
-        background: url('images/imghalf.gif') center right no-repeat;
+        background: url('/images/imghalf.gif') center right no-repeat;
         padding-right: 13px;
 }
 .im:hover {
-        background: url('images/imgfull.gif') center right no-repeat;
+        background: url('/images/imgfull.gif') center right no-repeat;
         padding-right: 13px;
 }
 
