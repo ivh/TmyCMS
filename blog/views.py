@@ -3,11 +3,17 @@ from django.views.generic import list_detail
 from MyDjangoSites.blog.models import Tag,Entry
 from django.contrib.sites.models import Site
 from django.contrib.syndication.views import Feed
+from django.core.paginator import Paginator, InvalidPage, EmptyPage
+from django.shortcuts import render_to_response,get_object_or_404
 
-
-def index(request):
+def index(request,page=1):
     current_site = Site.objects.get_current()
-    return list_detail.object_list(request,queryset=Entry.objects.filter(site=current_site)[:15], template_name='index.html')
+    paginator = Paginator(Entry.objects.filter(site=current_site), 15)
+    try:
+        entries = paginator.page(page)
+    except (EmptyPage, InvalidPage):
+        entries = paginator.page(paginator.num_pages)
+    return render_to_response('index.html', {"entries": entries})
 
 def tags(request):
     current_site = Site.objects.get_current()

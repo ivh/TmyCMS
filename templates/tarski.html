@@ -48,7 +48,7 @@
 
 					
 {% block content %}
-{% for object in object_list%}
+{% for object in entries.object_list%}
 <div class="post-{{ object.id }} post hentry category-schweden tag-foto tag-stockholm entry">
 			
   <div class="meta">
@@ -64,6 +64,17 @@
  			</div>
 		</div>
 {% endfor %}
+
+<p class="pagination">
+{% if entries.has_next %}
+<a href="/page/{{ entries.next_page_number }}/">&laquo; &Auml;ltere Beitr&auml;ge</a>
+{% endif %}
+&nbsp;(Seite {{ entries.number }} von {{ entries.paginator.num_pages }})&nbsp;
+{% if entries.has_previous %}
+<a href="/page/{{ entries.previous_page_number }}/" >Neuere Beitr&auml;ge &raquo;</a>
+{% endif %}
+</p> 
+
 {% endblock %}
 
 </div>
