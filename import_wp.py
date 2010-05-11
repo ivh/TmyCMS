@@ -11,7 +11,8 @@ from django.contrib.auth.models import User
 from django.contrib.comments.models import Comment
 from django.db.utils import IntegrityError
 from MyDjangoSites.blog.models import Entry, Tag
-from django.utils.encoding import smart_unicode as unic
+
+unic= lamdba x: x.decode('latin1').encode('utf-8')
 
 from random import choice
 def RandStr(length=3, chars=s.letters + s.digits):
