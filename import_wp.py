@@ -100,6 +100,7 @@ for blog in blogs:
 # and the other tags too.
 et=Tag.objects.get(slug='europa')
 eus=Site.objects.get(name='EU')
+ee=Entry.objects.filter(tags=et)
 for e in ee:
     e.site.add(eus)
     e.save()
