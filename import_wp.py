@@ -12,7 +12,7 @@ from django.contrib.comments.models import Comment
 from django.db.utils import IntegrityError
 from MyDjangoSites.blog.models import Entry, Tag
 
-unic= lambda x: x.decode('latin1').encode('utf-8')
+unic= lambda x: x.decode('latin1')
 
 from random import choice
 def RandStr(length=3, chars=s.letters + s.digits):
