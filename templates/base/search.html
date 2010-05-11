@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+{% block content %}
+<form action="." method="post">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Suchen" />
+
+
+<ul>
+{% for entry in results %}
+<li><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}
