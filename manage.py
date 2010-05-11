@@ -1,4 +1,9 @@
 #!/usr/bin/env python
+import sys
+sys.path.append('/home/tom/py/')
+sys.path.append('/home/tom/sites/')
+sys.path.append('/home/tom/sites/MyDjangoSites')
+
 from django.core.management import execute_manager
 try:
     import settings # Assumed to be in the same directory.
