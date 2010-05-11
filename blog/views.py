@@ -5,6 +5,9 @@ from django.contrib.sites.models import Site
 from django.contrib.syndication.views import Feed
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.shortcuts import render_to_response,get_object_or_404
+from simple_search import EntrySearchForm
+from django.template import RequestContext
+
 
 def index(request,page=1):
     current_site = Site.objects.get_current()
@@ -75,3 +78,26 @@ class LatestEntriesFeed(Feed):
 
     def item_description(self, item):
         return item.body
+
+
+def search(request):
+# from http://gregbrown.co.nz/code/django-simple-search/
+    if request.GET:
+        form = EntrySearchForm(request.GET)
+        if form.is_valid():
+            print 'bla'
+            results = form.get_result_queryset()
+        else:
+            results = []
+    else:
+        form = EntrySearchForm()
+        results = []
+
+
+    return render_to_response(
+        'search.html',
+        RequestContext(request, {
+            'form': form,
+            'results': results,
+        })
+    )

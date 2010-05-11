@@ -33,5 +33,6 @@ urlpatterns += patterns('MyDjangoSites.blog.views',
     (r'^tags/$', 'tags'),
     url(r'^tag/(?P<slug>\w+)/$','tag_view',name='tag'),
     (r'^post/(?P<id>\d+)/$','entry_by_id'),
+    (r'^search/$','search'),
     
  )
