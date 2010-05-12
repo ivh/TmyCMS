@@ -52,7 +52,7 @@ def entry_by_permalink(request, yr,mon,day,slug):
         object_id=entry.id
     )
 
-def tag_view(request, slug):
+def tag_view(request, slug, page=1):
     tag = get_object_or_404(Tag,slug=slug)
     
     cursite=Site.objects.get_current()
