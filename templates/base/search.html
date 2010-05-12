@@ -13,10 +13,21 @@
 
 {% block footcontent %}
 {% if results %}
-<ul>
-{% for entry in results %}
-<li><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></li>
-{% endfor %}
-</ul>
+{% for object in results %}
+<div class="post-{{ object.id }} post hentry ">
+			
+  <div class="meta">
+    <h2 class="title entry-title" id="post-{{ object.id }}">
+      <a href="{{object.get_absolute_url}}" rel="bookmark" title="Permalink für diesen Artikel">{{ object.title }}</a>
+    </h2>
+				<p class="metadata"><span class="date updated">{{ object.pub_date.date }}</span> | <a href="{{object.get_absolute_url}}#respond" class="comments-link"  title="Kommentieren">{% get_comment_count for object as comment_count %}{{ comment_count }} Kommentare</a></p>
+			</div>
+			
+			<div class="content">
+				{{ object.body|textile|truncatewords_html:30 }}
+
+ 			</div>
+		</div>
+{% endfor %}<ul>
 {% endif %}
 {% endblock %}
