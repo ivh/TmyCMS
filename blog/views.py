@@ -9,7 +9,7 @@ from simple_search import EntrySearchForm
 from django.template import RequestContext
 
 import logging
-logging.basicConfig(filename='/tmp/mydjangodebug.log'level=logging.DEBUG)
+logging.basicConfig(filename='/tmp/mydjangodebug.log',level=logging.DEBUG)
 l=logging.debug
 
 def index(request,page=1):
