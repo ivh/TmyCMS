@@ -1,12 +1,14 @@
 {% extends "index.html" %}
 {% block content %}
 <form action="." method="get">
-{% csrf_token %}
-<table>{{ form.as_table }}</table><input type="submit" value="Suchen" />
-
+{{ form.as_p }}<input type="submit" value="Suchen" />
+{% endblock %}
+{% block footcontent %}
+{% if results %}
 <ul>
 {% for entry in results %}
 <li><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></li>
 {% endfor %}
 </ul>
+{% endif %}
 {% endblock %}
