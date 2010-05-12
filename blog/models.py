@@ -29,7 +29,7 @@ class Entry(m.Model):
     lang=m.CharField(max_length=1,choices=LANGUAGES)
     title=m.CharField(max_length=512)
     slug=m.SlugField()
-    body=m.CharField(max_length=512)
+    body=m.CharField(max_length=100000)
     enable_comments = m.BooleanField(default=True)
     tags=m.ManyToManyField(Tag,related_name='entries',null=True,blank=True)
     site = m.ManyToManyField(Site)
