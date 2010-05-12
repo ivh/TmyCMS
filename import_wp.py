@@ -12,7 +12,7 @@ from django.contrib.comments.models import Comment
 from django.db.utils import IntegrityError
 from MyDjangoSites.blog.models import Entry, Tag
 
-unic= lambda x: x.decode('latin1')
+unic= lambda x: x #.decode('latin1')
 
 from random import choice
 def RandStr(length=3, chars=s.letters + s.digits):
@@ -42,9 +42,15 @@ def do_comments(cursor,ID,entry):
     cursor.execute('select comment_author,comment_author_email,comment_author_url,comment_author_IP,comment_date,comment_content from wp_comments where comment_approved=1 and comment_post_ID=%s'%ID)
     comments=cursor.fetchall()
     for comment_author,comment_author_email,comment_author_url,comment_author_IP,comment_date,comment_content in comments:
-        comm=Comment(content_object=entry,site=SITE,user_name=unic(comment_author)[:50],user_email=comment_author_email,user_url=comment_author_url,comment=unic(comment_content),ip_address='127.0.0.1',submit_date=comment_date,is_public=True,is_removed=False)
-        comm.save(force_insert=True)
-
+        comm=Comment(content_object=entry,site=SITE,user_name=unic(comment_author)[:49],user_email=comment_author_email,user_url=comment_author_url,comment=unic(comment_content),ip_address='127.0.0.1',submit_date=comment_date,is_public=True,is_removed=False)
+        try: comm.save(force_insert=True)
+        except Exception, e:
+            print comment_author,comment_author_email,comment_author_url,comment_author_IP,comment_date,comment_content
+            print Exception, e
+            if 'Incorrect string value' in e:
+                comm.comment=comment_content.decode('latin1')
+		comm.save(force_insert=True)
+            
 
 def do_entries(cursor):
     cursor.execute('select ID,post_date,post_title,post_content,post_name from wp_posts where post_status="publish" and (post_type="post");')
@@ -62,6 +68,11 @@ def do_entries(cursor):
             if 'column slug is not unique' in e:
                 entry.slug=entry.slug+RandStr()
                 entry.save()
+            if 'Incorrect string value' in e:
+                entry.body=post_content.decode('latin1')
+                entry.save(force_insert=True)
+
+
                 
     
     
