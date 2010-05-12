@@ -62,7 +62,8 @@ def tag_view(request, slug, page=1):
         request,
         queryset = entries,
         template_name = "tag.html",
-        extra_context = {'tag':tag}
+        extra_context = {'tag':tag},
+        paginate_by = 15
     )
 
 
