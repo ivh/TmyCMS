@@ -22,6 +22,9 @@ class Tag(m.Model):
     def get_absolute_url(self):
         return ('tag', [self.slug])
 
+    class Meta:
+        ordering = ["name"]
+
 class Entry(m.Model):
     pub_date=m.DateTimeField(null=True,blank=True)
     mod_date=m.DateTimeField(auto_now=True)

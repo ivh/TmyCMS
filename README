@@ -1,2 +1,23 @@
 This is for serving several of my sites
 which currently run with Wordpress or Drupal.
+
+
+TODO:
+best-of categoy from Fiket
+why are some tags like eu-preasidentschaft broken
+fix language when importing apparentbrightness
+fix textile conversion, maybe abandoning it.
+fix the rss-feeds
+add second sidebar block
+import the pages!
+add counter field to tags
+
+write sidebar-"widgets" for
+ last commented
+ 1/2/3 years ago
+ best of
+ blogroll
+ links
+
+internationalize
+import tmy.se as well (drupal)
