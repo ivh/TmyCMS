@@ -9,15 +9,24 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+dbpwd=open('/home/tom/sites/MyDjangoSites/pwds').read().split()[3]
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/home/tom/sites/MyDjangoSites/mysites.db',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
+        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'mydjangosites',                      # Or path to database file if using sqlite3.
+        'USER': 'mydjangosites',                      # Not used with sqlite3.
+        'PASSWORD': dbpwd,                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
         },
+    'sqlite': {
+	'ENGINE': 'django.db.backends.sqlite3',
+	'NAME': '/home/tom/sites/MyDjangoSites/mysites.db',
+	'USER': '',
+	'PASSWORD': '',
+        'HOST': '', 
+        'PORT': '',
+	},
 }
 
 # Local time zone for this installation. Choices can be found here:
