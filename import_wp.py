@@ -28,6 +28,7 @@ blogs=[{'sitename':'BlogBlog','dbuser':'blogblog','dbname':'blogblog','pwd':pwds
        {'sitename':'Erderhitzung','dbuser':'erderhitzung','dbname':'erderhitzung','pwd':pwds[5]},
     ]
 
+########################
 
 def do_tags(cursor):
     cursor.execute('select name,slug from wp_terms;')
@@ -89,6 +90,8 @@ def do_entries(cursor):
 
 
 
+## MAIN LOOP STARTS HERE
+
 for blog in blogs:
     conn = MySQLdb.connect (host = "localhost",
                              user = blog['dbuser'],
@@ -121,3 +124,15 @@ for e in ee:
         if t.slug != 'europa':
             t.site.add(eus)
 
+
+
+ALLSITE=Site.objects.get(name='AllBlog')
+
+for tag in Tag.objects.all():
+    tag.site.add(ALLSITE)
+    tag.save()
+
+
+for entry in Entry.objects.all():
+    entry.site.add(ALLSITE)
+    entry.save()

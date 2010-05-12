@@ -52,7 +52,7 @@
     <h2 class="title entry-title" id="post-{{ object.id }}">
       <a href="{{object.get_absolute_url}}" rel="bookmark" title="Permalink für diesen Artikel">{{ object.title }}</a>
     </h2>
-				<p class="metadata"><span class="date updated">{{ object.pub_date.date }}</span> | <a href="{{object.get_absolute_url}}#respond" class="comments-link"  title="Kommentieren">{% get_comment_count for object as comment_count %}{{ comment_count }} Kommentare</a></p>
+				<p class="metadata"><span class="date updated">{{ object.pub_date.date }}</span> | <a href="{{object.get_absolute_url}}#comments" class="comments-link"  title="Kommentare lesen oder selbst kommentieren">{% get_comment_count for object as comment_count %}{{ comment_count }} Kommentare</a></p>
 			</div>
 			
 			<div class="content">
