@@ -83,7 +83,7 @@ class LatestEntriesFeed(Feed):
         return item.title
 
     def item_description(self, item):
-        return textile.textile(item.body)
+        return textile.textile(item.body,encoding='utf8')
 
 
 def search(request):
