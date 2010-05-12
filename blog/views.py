@@ -33,10 +33,7 @@ def tags(request):
     return list_detail.object_list(request,queryset=Tag.objects.filter(site=current_site), template_name='tags.html')
 
 def entry_by_id(request, id):
-    try:
-        entry = Entry.objects.get(pk=id)
-    except Entry.DoesNotExist:
-        raise Http404
+    entry = get_object_or_404(Entry,pk=id)
     
     return list_detail.object_detail(
         request,
@@ -46,10 +43,7 @@ def entry_by_id(request, id):
     )
 
 def entry_by_permalink(request, yr,mon,day,slug):
-    try:
-        entry = Entry.objects.get(pub_date__year=yr, pub_date__month=mon,pub_date__day=day,slug=slug)
-    except Entry.DoesNotExist:
-        raise Http404
+    entry = get_object_or_404(Entry,pub_date__year=yr, pub_date__month=mon,pub_date__day=day,slug=slug)
     
     return list_detail.object_detail(
         request,
@@ -59,11 +53,8 @@ def entry_by_permalink(request, yr,mon,day,slug):
     )
 
 def tag_view(request, slug):
-    try:
-        tag = Tag.objects.get(slug=slug)
-    except Entry.DoesNotExist:
-        raise Http404
-
+    tag = get_object_or_404(Tag,slug=slug)
+    
     cursite=Site.objects.get_current()
     entries=tag.entries.filter(site=cursite)
     
