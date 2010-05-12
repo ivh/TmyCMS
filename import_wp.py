@@ -24,6 +24,8 @@ pwds=map(s.strip,pwds)
 blogs=[{'sitename':'BlogBlog','dbuser':'blogblog','dbname':'blogblog','pwd':pwds[0]},
        {'sitename':'Fiket','dbuser':'fiket','dbname':'fiket','pwd':pwds[1]},
        {'sitename':'Atheist','dbuser':'atheist','dbname':'atheistundgut','pwd':pwds[2]},
+       {'sitename':'ApparentBrightness','dbuser':'appbright','dbname':'appbright','pwd':pwds[4]},
+       {'sitename':'Erderhitzung','dbuser':'erderhitzung','dbname':'erderhitzung','pwd':pwds[5]},
     ]
 
 
