@@ -27,19 +27,16 @@
 {% block header %}
 
 	<div id="title">
-	<h1 id="blog-title">Fiket</h1>
-	<p id="tagline">das Blog aus und über Schweden</p></div>
+	<h1 id="blog-title">Base Template</h1>
+	<p id="tagline">bla bla</p></div>
 <div id="navigation" class="clearfix">
 <ul class="primary xoxo">
-<li><a id="nav-home" class="nav-current" href="http://www.fiket.de/" rel="home">Startseite</a></li>
-<li><a id="nav-2-about" href="http://www.fiket.de/about/">Über Fiket</a></li>
-<li><a id="nav-933-dies-und-das" href="http://www.fiket.de/dies-und-das/">Dies Und Das</a></li>
-<li><a id="nav-3-archiv" href="http://www.fiket.de/archiv/">Archiv</a></li>
-<li><a id="nav-11-impressum" href="http://www.fiket.de/impressum/">Impressum</a></li>
+<li><a id="nav-home" class="nav-current" href="/" rel="home">Startseite</a></li>
+<li><a id="nav-11-impressum" href="/impressum/">Impressum</a></li>
 </ul>
 
 <div class="secondary">
-	<p><a class="feed" href="http://www.fiket.de/feed/">Feed abonnieren</a></p>
+	<p><a class="feed" href="/feed/">Feed abonnieren</a></p>
 </div></div>
 {% endblock %}
 </div>
@@ -80,8 +77,14 @@
 </div>
 	
 <div id="sidebar" class="secondary">
-{% block sidebar %}	
-
+{% block sidebar %}
+{% if tags %}	
+<h3>Schlagworte</h3>
+<p>{% for tag in tags %}
+<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
+{% endfor %}
+</p>
+{% endif %}
 {% endblock %}
 
 </div>

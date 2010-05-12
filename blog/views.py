@@ -12,17 +12,21 @@ import textile
 
 import logging
 logging.basicConfig(filename='/tmp/mydjangodebug.log',level=logging.DEBUG)
-l=logging.debug
+L=logging.debug
 
 def index(request,page=1):
     current_site = Site.objects.get_current()
-    l(current_site.domain+'  ;  '+request.get_host())
+    L(current_site.domain+'  ;  '+request.get_host())
+
+    tags=Tag.objects.filter(site=current_site)
+
     paginator = Paginator(Entry.objects.filter(site=current_site), 15)
     try:
         entries = paginator.page(page)
     except (EmptyPage, InvalidPage):
         entries = paginator.page(paginator.num_pages)
-    return render_to_response('index.html', {"entries": entries})
+
+    return render_to_response('index.html', {"entries": entries, 'tags':tags})
 
 def tags(request):
     current_site = Site.objects.get_current()
