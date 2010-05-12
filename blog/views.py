@@ -75,7 +75,7 @@ class LatestEntriesFeed(Feed):
     description = ""
 
     def items(self):
-        return Entry.objects.all()[:15]
+        return Entry.objects.all(site=Site.objects.get_current())[:15]
 
     def item_title(self, item):
         return item.title
