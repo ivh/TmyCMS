@@ -47,7 +47,7 @@ def do_comments(cursor,ID,entry):
 
 
 def do_entries(cursor):
-    cursor.execute('select ID,post_date,post_title,post_content,post_name from wp_posts where post_status="publish" and (post_type="post" or post_type="page");')
+    cursor.execute('select ID,post_date,post_title,post_content,post_name from wp_posts where post_status="publish" and (post_type="post");')
     posts=cursor.fetchall()
         
     for ID,post_date,post_title,post_content,post_name in posts:
