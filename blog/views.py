@@ -62,7 +62,7 @@ def tag_view(request, slug):
         request,
         queryset = entries,
         template_name = "tag.html",
-        extra_content = {'tag':tag}
+        extra_context = {'tag':tag}
     )
 
 
