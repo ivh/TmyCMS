@@ -35,7 +35,7 @@
 			    <div class="comment-wrapper clearfix" id="comment-wrapper-{{ comment.id }}">
 			      <p class="comment-meta commentmetadata">
 				<span class="comment-author vcard">
-				  <a class="url fn" href="{{ comment.user_url }}" rel="external nofollow">{{ comment.user_name }}</a></span> am <span class="comment-permalink">
+				  {% if comment.user_url %}<a class="url fn" href="{{ comment.user_url }}" rel="external nofollow">{{ comment.user_name }}</a>{% else %}{{ comment.user_name }}{% endif %}</span> am <span class="comment-permalink">
 				  <a title="Permalink zu diesem Kommentar" href="{{ object.get_absolute_url }}#comment-65045">2010-05-04 um 17:31</a></span>					</p> 
 					
 					<div class="comment-content content"> 
