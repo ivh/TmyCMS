@@ -8,6 +8,8 @@ from django.shortcuts import render_to_response,get_object_or_404
 from simple_search import EntrySearchForm
 from django.template import RequestContext
 
+import textile
+
 import logging
 logging.basicConfig(filename='/tmp/mydjangodebug.log',level=logging.DEBUG)
 l=logging.debug
@@ -81,7 +83,7 @@ class LatestEntriesFeed(Feed):
         return item.title
 
     def item_description(self, item):
-        return item.body
+        return textile.textile(item.body)
 
 
 def search(request):
