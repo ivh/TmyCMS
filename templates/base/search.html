@@ -1,4 +1,7 @@
 {% extends "index.html" %}
+{% load markup %}
+{% load comments %}
+
 {% block content %}
 <form action="/search/" method="get">
 {{ form.as_p }}<input type="submit" value="Suchen" />
