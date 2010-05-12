@@ -24,6 +24,11 @@
 {% endfor %}
 
 {% else %}
-<p>Keine Artikel zu diesem Schlagwort gefunden. Stattdessen <a href="">danach suchen</a>? (Noch nicht implementiert!)</p>
+<p>Keine Artikel zu diesem Schlagwort gefunden. Stattdessen <a href="/search/?q={{ tag.name }}">danach suchen</a>?</p>
 {% endif %}
+{% endblock %}
+
+{% block sidebar %}
+<p>Alle Artikel zum Schlagwort</p>
+<h2>{{ tag.name }}</h2>
 {% endblock %}
