@@ -8,9 +8,13 @@ from django.shortcuts import render_to_response,get_object_or_404
 from simple_search import EntrySearchForm
 from django.template import RequestContext
 
+import logging
+logging.basicConfig(filename='/tmp/mydjangodebug.log'level=logging.DEBUG)
+l=logging.debug
 
 def index(request,page=1):
     current_site = Site.objects.get_current()
+    l(current_site.domain)
     paginator = Paginator(Entry.objects.filter(site=current_site), 15)
     try:
         entries = paginator.page(page)
@@ -85,7 +89,7 @@ def search(request):
     if request.GET:
         form = EntrySearchForm(request.GET)
         if form.is_valid():
-            print 'bla'
+
             results = form.get_result_queryset()
         else:
             results = []
