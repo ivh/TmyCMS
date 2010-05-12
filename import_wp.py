@@ -42,7 +42,7 @@ def do_comments(cursor,ID,entry):
     cursor.execute('select comment_author,comment_author_email,comment_author_url,comment_author_IP,comment_date,comment_content from wp_comments where comment_approved=1 and comment_post_ID=%s'%ID)
     comments=cursor.fetchall()
     for comment_author,comment_author_email,comment_author_url,comment_author_IP,comment_date,comment_content in comments:
-        comm=Comment(content_object=entry,site=SITE,user_name=unic(comment_author),user_email=comment_author_email,user_url=comment_author_url,comment=unic(comment_content),ip_address='127.0.0.1',submit_date=comment_date,is_public=True,is_removed=False)
+        comm=Comment(content_object=entry,site=SITE,user_name=unic(comment_author)[:49],user_email=comment_author_email,user_url=comment_author_url,comment=unic(comment_content),ip_address='127.0.0.1',submit_date=comment_date,is_public=True,is_removed=False)
         comm.save(force_insert=True)
 
 
