@@ -7,7 +7,8 @@ from django.conf import settings
 from django.core.exceptions import FieldError
 
 from MyDjangoSites.blog.models import Entry
-    
+from django.contrib.sites.models import Site
+
 class BaseSearchForm(forms.Form):
     q = forms.CharField(label='Suchbegriffe', required=False)
     def clean_q(self):
@@ -87,5 +88,5 @@ class BaseSearchForm(forms.Form):
 
 class EntrySearchForm(BaseSearchForm):
     class Meta:
-        base_qs = Entry.objects
+        base_qs = Entry.objects.filter(site=Site.objects.get_current())
         search_fields = ['title','body',] 
