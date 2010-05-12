@@ -9,7 +9,7 @@ from django.core.exceptions import FieldError
 from MyDjangoSites.blog.models import Entry
     
 class BaseSearchForm(forms.Form):
-    q = forms.CharField(label='Search', required=False)
+    q = forms.CharField(label='Suchbegriffe', required=False)
     def clean_q(self):
         return self.cleaned_data['q'].strip()
         
