@@ -14,7 +14,7 @@ l=logging.debug
 
 def index(request,page=1):
     current_site = Site.objects.get_current()
-    l(current_site.domain,request.get_host())
+    l(current_site.domain+'  ;  '+request.get_host())
     paginator = Paginator(Entry.objects.filter(site=current_site), 15)
     try:
         entries = paginator.page(page)
