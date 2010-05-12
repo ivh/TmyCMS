@@ -13,10 +13,10 @@ class BaseSearchForm(forms.Form):
     def clean_q(self):
         return self.cleaned_data['q'].strip()
         
-    order_by = forms.CharField(
-        widget=forms.HiddenInput(),
-        required=False,
-    )
+#    order_by = forms.CharField(
+#        widget=forms.HiddenInput(),
+#        required=False,
+#    )
     
       
     class Meta:
@@ -64,8 +64,8 @@ class BaseSearchForm(forms.Form):
         for field in cleaned_data:
             if isinstance(cleaned_data[field], Q):
                 args.append(cleaned_data[field])
-            elif field == 'order_by':
-                pass # special case - ordering handled in get_result_queryset
+#            elif field == 'order_by':
+#                pass # special case - ordering handled in get_result_queryset
             elif cleaned_data[field]:
                 args.append(Q(**{field: cleaned_data[field]}))
         
@@ -79,8 +79,8 @@ class BaseSearchForm(forms.Form):
                 qs = qs.distinct()
                 break
         
-        if self.cleaned_data['order_by']:
-            qs = qs.order_by(self.cleaned_data['order_by'])
+#        if self.cleaned_data['order_by']:
+#            qs = qs.order_by(self.cleaned_data['order_by'])
                             
         return qs
 

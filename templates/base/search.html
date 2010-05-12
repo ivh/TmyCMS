@@ -1,8 +1,16 @@
 {% extends "index.html" %}
 {% block content %}
-<form action="." method="get">
+<form action="/search/" method="get">
 {{ form.as_p }}<input type="submit" value="Suchen" />
 {% endblock %}
+
+{% block footsidebar %}
+{% if results %}
+<h1>Suchergebnisse</h1>
+{% endif %}
+{% endblock %}
+
+
 {% block footcontent %}
 {% if results %}
 <ul>
