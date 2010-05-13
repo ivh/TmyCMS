@@ -5,7 +5,7 @@
 {% block content %}
 {% if entries %}
 
-{% for object in entries %}
+{% for object in entries.object_list %}
 <div class="post-{{ object.id }} post entry ">
                         
   <div class="meta">

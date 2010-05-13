@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 from django.contrib.comments.models import Comment
 from django.db.utils import IntegrityError
 from MyDjangoSites.blog.models import Entry, Tag
+from django.db import connection
 
 unic= lambda x: x #.decode('latin1')
 
@@ -136,3 +137,11 @@ for tag in Tag.objects.all():
 for entry in Entry.objects.all():
     entry.site.add(ALLSITE)
     entry.save()
+
+
+### replace ops
+cursor=connection.cursor()
+
+cursor.execute('UPDATE blog_entry SET body = replace(body, "</object>", "</object>\n");')
+
+connection.commit()
