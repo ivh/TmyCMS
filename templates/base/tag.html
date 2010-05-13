@@ -3,9 +3,9 @@
 {% load comments %}
 
 {% block content %}
-{% if object_list %}
+{% if entries %}
 
-{% for object in object_list %}
+{% for object in entries %}
 <div class="post-{{ object.id }} post entry ">
                         
   <div class="meta">
