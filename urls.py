@@ -28,12 +28,12 @@ urlpatterns += patterns('',
 
 urlpatterns += patterns('MyDjangoSites.blog.views',
     (r'^$', 'index'),
-    (r'^page/(?P<page>\d+)/$', 'index'),
+    url(r'^page/(?P<page>\d+)/$', 'index',name='pindex'),
     url(r'^(?P<yr>\d{4})/(?P<mon>\d{2})/(?P<day>\d{2})/(?P<slug>[\w-]+)/$','entry_by_permalink',name='permalink'),
     (r'^tags/$', 'tags'),
     url(r'^tag/(?P<slug>\w+)/$','tag_view',name='tag'),
     url(r'^tag/(?P<slug>\w+)/page/(?P<page>\d+)/$','tag_view',name='tagpage'),
     (r'^post/(?P<id>\d+)/$','entry_by_id'),
-    (r'^search/$','search'),
+    url(r'^search/$','search',name='search'),
     
  )

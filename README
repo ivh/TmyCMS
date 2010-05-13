@@ -11,6 +11,7 @@ fix the rss-feeds
 add second sidebar block for having both common and custom widgets between sites
 import the WP-pages!
 pagination liks for tag pages.
+fix language in html declaration, make it dynamic
 
 write sidebar-"widgets" for
  last commented
@@ -20,6 +21,6 @@ write sidebar-"widgets" for
  links
 
 In the longer run:
-internationalize
+internationalize all strings
 import tmy.se as well (drupal)
 add counter field to tags to order them by popularity

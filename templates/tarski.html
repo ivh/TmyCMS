@@ -18,8 +18,8 @@
 <link rel="stylesheet" href="/classic.css" type="text/css" media="all" />
 
 <script type="text/javascript" src="tarski.js"></script>
-<link rel="alternate" type="application/rss+xml" title="Fiket &raquo; Feed" href="http://www.fiket.de/feed/" />
-<link rel="alternate" type="application/rss+xml" title="Fiket &raquo; Comments Feed" href="http://www.fiket.de/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Feed" href="" />
+<link rel="alternate" type="application/rss+xml" title="Comments Feed" href="" />
 
 </head>
 
@@ -65,11 +65,11 @@
 
 <p class="pagination">
 {% if entries.has_next %}
-<a href="/page/{{ entries.next_page_number }}/">&laquo; &Auml;ltere Beitr&auml;ge</a>
+<a href="{% url pindex page=entries.next_page_number %}">&laquo; &Auml;ltere Beitr&auml;ge</a>
 {% endif %}
 &nbsp;(Seite {{ entries.number }} von {{ entries.paginator.num_pages }})&nbsp;
 {% if entries.has_previous %}
-<a href="/page/{{ entries.previous_page_number }}/" >Neuere Beitr&auml;ge &raquo;</a>
+<a href="{% url pindex page=entries.previous_page_number %}" >Neuere Beitr&auml;ge &raquo;</a>
 {% endif %}
 </p> 
 
@@ -98,7 +98,7 @@
 	<div class="secondary">
 	{% block footsidebar %}	
 
-<form action="/search/" method="get"> 
+<form action="{% url search %}" method="get"> 
 <p><input type="text" name="q" value="" id="id_q" /><input type="submit" value="Suchen" /> </p>
  
 	{% endblock %}
