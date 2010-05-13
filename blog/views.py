@@ -28,6 +28,19 @@ def index(request,page=1):
 
     return render_to_response('index.html', {"entries": entries, 'tags':tags})
 
+def tag_view(request, slug, page=1):
+    tag = get_object_or_404(Tag,slug=slug)
+    
+    cursite=Site.objects.get_current()
+    paginator = Paginator(tag.entries.filter(site=cursite),15)
+    try:
+        entries = paginator.page(page)
+    except (EmptyPage, InvalidPage):
+        entries = paginator.page(paginator.num_pages)
+
+    return render_to_response('tag.html', {"entries": entries, 'tag':tag})
+    
+
 def tags(request):
     current_site = Site.objects.get_current()
     return list_detail.object_list(request,queryset=Tag.objects.filter(site=current_site), template_name='tags.html')
@@ -51,21 +64,6 @@ def entry_by_permalink(request, yr,mon,day,slug):
         template_name = "entry.html",
         object_id=entry.id
     )
-
-def tag_view(request, slug, page=1):
-    tag = get_object_or_404(Tag,slug=slug)
-    
-    cursite=Site.objects.get_current()
-    entries=tag.entries.filter(site=cursite)
-    
-    return list_detail.object_list(
-        request,
-        queryset = entries,
-        template_name = "tag.html",
-        extra_context = {'tag':tag},
-        paginate_by = 15
-    )
-
 
 
 class LatestEntriesFeed(Feed):
