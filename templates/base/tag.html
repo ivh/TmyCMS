@@ -23,9 +23,20 @@
 
 {% endfor %}
 
+<p class="pagination">
+{% if entries.has_next %}
+<a href="/page/{{ entries.next_page_number }}/">&laquo; &Auml;ltere Beitr&auml;ge</a>
+{% endif %}
+&nbsp;(Seite {{ entries.number }} von {{ entries.paginator.num_pages }})&nbsp;
+{% if entries.has_previous %}
+<a href="/page/{{ entries.previous_page_number }}/" >Neuere Beitr&auml;ge &raquo;</a>
+{% endif %}
+</p> 
+
 {% else %}
 <p>Keine Artikel zu diesem Schlagwort gefunden. Stattdessen <a href="/search/?q={{ tag.name }}">danach suchen</a>?</p>
 {% endif %}
+
 {% endblock %}
 
 {% block sidebar %}
