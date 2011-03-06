@@ -1,9 +1,11 @@
 from django.utils.translation import ugettext_lazy as _
-from django.db import models as m
 from django.contrib.sites.models import Site
 from django.contrib.sites.managers import CurrentSiteManager
 from django.contrib.auth.models import User
 from django.contrib.comments.moderation import CommentModerator, moderator
+
+from django.db.models import *
+from markupfield.fields import MarkupField
 
 LANGUAGES=(
 ('g',_('German')),
@@ -11,32 +13,32 @@ LANGUAGES=(
 ('e',_('English')),
 )
 
-class Tag(m.Model):
-    slug=m.SlugField(primary_key=True,unique=True)
-    name=m.CharField(max_length=128)
-    site=m.ManyToManyField(Site)
+class Tag(Model):
+    slug=SlugField(primary_key=True,unique=True)
+    name=CharField(max_length=128)
+    site=ManyToManyField(Site)
     def __unicode__(self):
         return u'Tag: %s'%self.name
 
-    @m.permalink
+    @permalink
     def get_absolute_url(self):
         return ('tag', [self.slug])
 
     class Meta:
         ordering = ["name"]
 
-class Entry(m.Model):
-    pub_date=m.DateTimeField(null=True,blank=True)
-    mod_date=m.DateTimeField(auto_now=True)
-    author=m.ForeignKey(User,related_name='entries')
-    lang=m.CharField(max_length=1,choices=LANGUAGES)
-    title=m.CharField(max_length=512)
-    slug=m.SlugField()
-    body=m.TextField()
-    enable_comments = m.BooleanField(default=True)
-    tags=m.ManyToManyField(Tag,related_name='entries',null=True,blank=True)
-    site = m.ManyToManyField(Site)
-    objects = m.Manager()
+class Entry(Model):
+    pub_date=DateTimeField(null=True,blank=True)
+    mod_date=DateTimeField(auto_now=True)
+    author=ForeignKey(User,related_name='entries')
+    lang=CharField(max_length=1,choices=LANGUAGES)
+    title=CharField(max_length=512)
+    slug=SlugField()
+    body=MarkupField(markup_type='textile')
+    enable_comments = BooleanField(default=True)
+    tags=ManyToManyField(Tag,related_name='entries',null=True,blank=True)
+    site = ManyToManyField(Site)
+    objects = Manager()
     on_site = CurrentSiteManager()
 
     def publish(self):
@@ -45,7 +47,7 @@ class Entry(m.Model):
     def __unicode__(self):
         return u'Entry %s: %s'%(self.id,self.title)
 
-    @m.permalink
+    @permalink
     def get_absolute_url(self):
         return ('permalink', [str(self.pub_date.year),str(self.pub_date.month).zfill(2),str(self.pub_date.day).zfill(2),self.slug])
 

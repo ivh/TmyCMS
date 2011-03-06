@@ -8,8 +8,6 @@ from simple_search import EntrySearchForm
 from django.template import RequestContext
 from models import Tag,Entry
 
-import textile
-
 import logging
 logging.basicConfig(filename='/tmp/mydjangodebug.log',level=logging.DEBUG)
 L=logging.debug
@@ -78,7 +76,7 @@ class LatestEntriesFeed(Feed):
         return item.title
 
     def item_description(self, item):
-        return textile.textile(item.body)
+        return item.body.rendered
 
 
 def search(request):
