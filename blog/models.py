@@ -51,7 +51,7 @@ class Entry(m.Model):
 
     class Meta:
         ordering = ["-pub_date"]
-        
+
 
 
 # see http://docs.djangoproject.com/en/dev/ref/contrib/comments/moderation/

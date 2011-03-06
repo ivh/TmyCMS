@@ -1,4 +1,4 @@
-from MyDjangoSites.blog.models import Tag,Entry
+from models import Tag,Entry
 from django.contrib import admin
 
 class EntryAdmin(admin.ModelAdmin):

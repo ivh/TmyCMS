@@ -1,4 +1,4 @@
-# Django settings for MyDjangoSites project.
+# Django settings for TmyCMS project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -9,24 +9,24 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-dbpwd=open('/home/tom/sites/MyDjangoSites/pwds').read().split()[3]
+dbpwd=open('/home/tom/sites/TmyCMS/pwds').read().split()[3]
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'mydjangosites',                      # Or path to database file if using sqlite3.
-        'USER': 'mydjangosites',                      # Not used with sqlite3.
-        'PASSWORD': dbpwd,                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'tmycms',
+        'USER': 'tmycms',
+        'PASSWORD': dbpwd,
+        'HOST': '',
+        'PORT': '',
         },
     'sqlite': {
-	'ENGINE': 'django.db.backends.sqlite3',
-	'NAME': '/home/tom/sites/MyDjangoSites/mysites.db',
-	'USER': '',
-	'PASSWORD': '',
-        'HOST': '', 
+    'ENGINE': 'django.db.backends.sqlite3',
+    'NAME': '/home/tom/sites/TmyCMS/mysites.db',
+    'USER': '',
+    'PASSWORD': '',
+        'HOST': '',
         'PORT': '',
-	},
+    },
 }
 
 # Local time zone for this installation. Choices can be found here:
@@ -89,13 +89,13 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'MyDjangoSites.urls'
+ROOT_URLCONF = 'TmyCMS.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/home/tom/sites/MyDjangoSites/templates'
+    '/home/tom/sites/TmyCMS/templates'
 )
 
 INSTALLED_APPS = (
@@ -110,5 +110,5 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.comments',
 
-    'MyDjangoSites.blog',
+    'blog',
 )

@@ -1,12 +1,12 @@
 from django.http import Http404
 from django.views.generic import list_detail
-from MyDjangoSites.blog.models import Tag,Entry
 from django.contrib.sites.models import Site
 from django.contrib.syndication.views import Feed
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.shortcuts import render_to_response,get_object_or_404
 from simple_search import EntrySearchForm
 from django.template import RequestContext
+from models import Tag,Entry
 
 import textile
 
@@ -30,7 +30,7 @@ def index(request,page=1):
 
 def tag_view(request, slug, page=1):
     tag = get_object_or_404(Tag,slug=slug)
-    
+
     cursite=Site.objects.get_current()
     paginator = Paginator(tag.entries.filter(site=cursite),15)
     try:
@@ -39,7 +39,7 @@ def tag_view(request, slug, page=1):
         entries = paginator.page(paginator.num_pages)
 
     return render_to_response('tag.html', {"entries": entries, 'tag':tag})
-    
+
 
 def tags(request):
     current_site = Site.objects.get_current()
@@ -47,7 +47,7 @@ def tags(request):
 
 def entry_by_id(request, id):
     entry = get_object_or_404(Entry,pk=id)
-    
+
     return list_detail.object_detail(
         request,
         queryset = Entry.objects.all(),
@@ -57,7 +57,7 @@ def entry_by_id(request, id):
 
 def entry_by_permalink(request, yr,mon,day,slug):
     entry = get_object_or_404(Entry,pub_date__year=yr, pub_date__month=mon,pub_date__day=day,slug=slug)
-    
+
     return list_detail.object_detail(
         request,
         queryset = Entry.objects.all(),
